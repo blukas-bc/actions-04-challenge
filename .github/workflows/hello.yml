@@ -1,0 +1,26 @@
+name: hello
+
+on: push
+
+env:
+    ARTIFACT_NAME: "hello_world"
+
+jobs:
+    job1:
+        name: Test
+        runs-on: windows-latest
+        steps:
+            - name: Check out the repo
+              uses: actions/checkout@v4
+            - name: Run the script
+              run: python ./hello.py > ./out.txt
+    job2:
+        name: Build
+        needs: job1
+        runs-on: windows-latest
+        steps:
+            - name: Upload artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: ${{env.ARTIFACT_NAME}}
+                path: ./out.txt
