@@ -2,9 +2,6 @@ name: hello
 
 on: push
 
-env:
-    ARTIFACT_NAME: "hello_world"
-
 jobs:
     job1:
         name: Test
@@ -22,7 +19,7 @@ jobs:
             - name: Check out the repo
               uses: actions/checkout@v4
             - name: Download artifact
-              uses: actions/download-artifact@v4
+              uses: actions/upload-artifact@v4
               with:
                 name: hello
                 path: .
