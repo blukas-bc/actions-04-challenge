@@ -10,7 +10,7 @@ jobs:
             - name: Check out the repo
               uses: actions/checkout@v4
             - name: Run the script
-              run: python hello.py
+              run: python hello.py > out.txt
     job2:
         name: Build
         needs: job1
