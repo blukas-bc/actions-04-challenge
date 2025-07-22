@@ -13,12 +13,7 @@ jobs:
             - name: Check out the repo
               uses: actions/checkout@v4
             - name: Run the script
-              run: python hello.py > out.txt
-            - name: Upload the artifact
-              uses: actions/upload-artifact@v4
-              with:
-                name: ${{env.ARTIFACT_NAME}}
-                path: out.txt
+              run: python hello.py
     job2:
         name: Build
         needs: job1
@@ -29,4 +24,5 @@ jobs:
             - name: Download artifact
               uses: actions/download-artifact@v4
               with:
-                name: ${{env.ARTIFACT_NAME}}
+                name: hello
+                path: .
